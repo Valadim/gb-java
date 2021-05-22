@@ -5,12 +5,15 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
+        int[] freeArr = {2, 2, 2, 1, 2, 2, 10, 1};
 
         changeOneToZero();
         fillArray();
         multipleArrayElement();
         squareMultipleArray();
         findMinMax();
+
+        System.out.println(checkBalance(freeArr));
     }
 
     static void changeOneToZero() {
@@ -109,30 +112,26 @@ public class Main {
         System.out.println("Минимальное число в массиве " + minNum);
     }
 
-//    static boolean checkBalance( int[] arr ) {
-///*
-//    6. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
-//          метод должен вернуть true, если в массиве есть место,
-//          в котором сумма левой и правой части массива равны.
-//          Примеры: checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
-//          checkBalance([1, 1, 1, || 2, 1]) → true,
-//          граница показана символами ||, эти символы в массив не входят.
-//*/
-//        int[] nums = {5, 18, 26, 1, 7, 3, 6, 8, 42, 68};
-//        int maxNum = 0;
-//        int minNum = nums[0];
-//
-//        for (int num : nums) {
-//            if (num > maxNum) {
-//                maxNum = num;
-//            }
-//
-//            if (num < minNum) {
-//                minNum = num;
-//            }
-//        }
-//
-//        System.out.println("Максимальное число в массиве " + maxNum);
-//        System.out.println("Минимальное число в массиве " + minNum);
-//    }
+    static boolean checkBalance(int[] arr) {
+/*
+    6. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
+          метод должен вернуть true, если в массиве есть место,
+          в котором сумма левой и правой части массива равны.
+          Примеры: checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
+          checkBalance([1, 1, 1, || 2, 1]) → true,
+          граница показана символами ||, эти символы в массив не входят.
+*/
+
+        int rightSum = arr[arr.length - 1] + arr[arr.length - 2];
+        int leftSum = 0;
+
+        for (int i = 0; i < arr.length - 2; i++) {
+            leftSum += arr[i];
+        }
+
+        System.out.println(leftSum + " | " + rightSum);
+
+        return leftSum == rightSum;
+
+    }
 }
