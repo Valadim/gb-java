@@ -12,7 +12,6 @@ public class Main {
         multipleArrayElement();
         squareMultipleArray();
         findMinMax();
-
         System.out.println(checkBalance(freeArr));
     }
 
@@ -95,7 +94,7 @@ public class Main {
     и максимальный элементы (без помощи интернета);
 */
         int[] nums = {5, 18, 26, 1, 7, 3, 6, 8, 42, 68};
-        int maxNum = 0;
+        int maxNum = nums[0];
         int minNum = nums[0];
 
         for (int num : nums) {
@@ -112,9 +111,8 @@ public class Main {
         System.out.println("Минимальное число в массиве " + minNum);
     }
 
-    static boolean checkBalance(int[] arr) {
-/*
-    6. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
+    static boolean checkBalance(int[] array) {
+/*  6. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
           метод должен вернуть true, если в массиве есть место,
           в котором сумма левой и правой части массива равны.
           Примеры: checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
@@ -122,16 +120,29 @@ public class Main {
           граница показана символами ||, эти символы в массив не входят.
 */
 
-        int rightSum = arr[arr.length - 1] + arr[arr.length - 2];
-        int leftSum = 0;
-
-        for (int i = 0; i < arr.length - 2; i++) {
-            leftSum += arr[i];
+        if (array.length < 2 || array == null) {
+            return false;
         }
 
-        System.out.println(leftSum + " | " + rightSum);
+        int i;
 
-        return leftSum == rightSum;
+        for (i = 0; i < array.length - 1; i++) {
 
+            int summ1 = 0;
+            for (int j = 0; j <= i; j++) {
+                summ1 += array[j];
+            }
+
+            int summ2 = 0;
+            for (int j = i + 1; j < array.length; j++) {
+                summ2 += array[j];
+            }
+
+            if (summ1 == summ2) {
+                System.out.println(summ1 + " = " + summ2);
+                return true;
+            }
+        }
+        return false;
     }
 }
